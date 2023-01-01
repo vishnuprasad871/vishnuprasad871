@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Wac_OrderManager::css/grid.css"/>
+        <script src="Wac_OrderManager::js/productGrid.js" />
+
+    </head>
+    <body>
+        <referenceContainer name="header.panel.wrapper" remove="true" />
+        <referenceContainer name="page.top" remove="true" />
+        <referenceContainer name="footer" remove="true" />
+        <referenceBlock name="absolute_footer" remove="true" />
+        <referenceBlock name="copyright" remove="true" />
+        <referenceBlock name="top.search" remove="true" />
+        <referenceBlock name="top.links" remove="true" />
+        <referenceBlock name="search.autocomplete" remove="true" />
+        <referenceBlock name="minicart" remove="true" />
+        
+        <referenceBlock name="navigation.sections" remove="true" />
+        <referenceContainer name="content">
+            <block class="Wac\OrderManager\Block\Products" name="custom.products.list" as="product_list" template="Wac_OrderManager::products/list.phtml" cacheable="false" />
+        </referenceContainer>
+        <referenceContainer name="header-wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="clear_cache" as="clear_cache" after="logo" template="Wac_OrderManager::clear_cache.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

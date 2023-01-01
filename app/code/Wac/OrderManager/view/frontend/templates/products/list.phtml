@@ -1,0 +1,199 @@
+<style>
+#popup-modal{
+    display: none;
+}
+#popup-modal form .row {
+    display: flex;
+    margin-bottom: 10px;
+}
+#popup-modal form .row label{
+    min-width: 150px;
+}
+#popup-modal form .row input{
+    max-width: 300px;
+}
+
+#popup-modal form  button{
+    width: 100px;
+    height: 30px;
+    color: #000;
+    background: #cf7e7e;
+}
+</style>
+<?php
+$_productCollection = $block->getLoadedProductCollection();
+$_helper = $this->helper(Magento\Catalog\Helper\Output::class);
+?>
+<?php if (!$_productCollection->count()) :?>
+    <div class="message info empty"><div><?= $block->escapeHtml(__('We can\'t find products matching the selection.')) ?></div></div>
+<?php else :?>
+<div class="admin__data-grid-wrap" data-role="grid-wrapper">
+    <table class="data-grid data-grid-draggable" data-role="grid">
+       <thead>
+            <tr>
+                <td colspan="2" style="border: none">
+                 
+                </td>
+                <td colspan="2" style="border:none;">
+
+                </td>
+            </tr>
+            <tr id="grid-actions">
+                <td colspan="2" style="border: none">
+                    <div class="filter-box" style="float:left;display: flex;">
+                        <form action="<?= $this->getUrl('ordermanager/products/index')?>" method="GET">
+                            <label for="search">Search By Name/Code</label>
+                            <input name="q" id="product_search" value="<?= $block->getQuery()?>" class="search" />
+                            <?php if ($block->getStore()): ?>
+                            <input type="hidden" name="store" value="<?= $block->getStore()?>" />
+                            <?php endif; ?>
+                            <!-- <button name="Search" id="submit-search" type="submit">Search</button> -->
+                        </form>
+                    </div>
+                </td>
+                <td colspan="2" style="border:none;">
+               
+                </td>
+            </tr>
+            <tr>
+            <th class="data-grid-th">
+                </th>
+                <th class="data-grid-th">
+                    <span class="data-grid-cell-content">Product Name</span>
+                </th>
+                <th class="data-grid-th">
+                    <span class="data-grid-cell-content">Product Sku</span>
+                </th>
+                <th class="data-grid-th">
+                    <span class="data-grid-cell-content">Rack Number</span>
+                </th>
+                <th class="data-grid-th">
+                    <span class="data-grid-cell-content">Status</span>
+                </th>
+                <th class="data-grid-th">
+                    <span class="data-grid-cell-content">Last Date</span>
+                </th>
+                <th class="data-grid-th">
+                    <span class="data-grid-cell-content">Action</span>
+                </th>
+                
+            </tr>
+       </thead>
+       <tbody id="product_listing">
+            <?php foreach ($_productCollection as $_product) :
+                $productStock = $block->getStockItemInformation( $_product->getId());
+
+                ?>
+            <tr class="data-row">
+                 <td>
+                  <button <?php if($productStock->getIsInStock()==false) echo "disabled" ?> id="<?php echo  $_product->getId()."_/_".$_product->getName();?>" class="create_log_btn"> Create Log</button>
+                </td>
+                <td>
+                    <div class="data-grid-cell-content"><?= $_helper->productAttribute($_product, $_product->getName(), 'name') ?></div>
+                </td>
+                <td>
+                    <div class="data-grid-cell-content"><?= $_helper->productAttribute($_product, $_product->getSku(), 'sku') ?></div>
+                </td>
+                <td>
+                    <div class="data-grid-cell-content"><?= $_product->getData('rack_number') ?></div>
+                </td>
+                <td>
+                <div class="data-grid-cell-content"><?= ($productStock->getIsInStock() == 1 ? 'Available' : 'Not Avilable')?>
+                </td>
+                <td>
+                    <span class="data-grid-cell-content"> </span>
+                </td>
+                <td>
+                    <a class="action-menu-item" target="_self" href="<?= $block->getUrl('ordermanager/products/statuschange', ['id' => $_product->getId(),'store' => $block->getStore()])?>">
+                        <?= ($productStock->getIsInStock() == 1 ? '' : 'Returned')?>
+                    </a>
+                </td>
+              
+               
+            </tr>
+            <?php endforeach; ?>
+       </tbody>
+    </table>
+</div>
+
+<?php endif; ?>
+<script type="text/x-magento-init">
+	{
+        "*": {
+			"productGrid": {
+				"statuschangeall": "<?= $block->escapeUrl($block->getUrl('ordermanager/products/statuschangeall')) ?>",
+				"store_code": "<?= $block->getStore() ?>"
+			}
+        }
+    }
+</script>
+<div id="popup-modal">
+ 
+    <form method="POST" action="<?= $block->getUrl('ordermanager/products/addtologs')?>">
+        <input type="hidden" id="book_id" name="book_id"> 
+        <div class="row">
+            <label>Name</label>
+            <input type="text" required name="customer_name">
+        </div>
+        <div class="row">
+            <label>Card Number</label>
+            <input type="text" required name="card_number">
+        </div>
+        <div class="row">
+            <label>Phone Number</label>
+            <input type="text" required name="phone_number">
+        </div>
+        <button type="submit" > Create</button>
+    </form>
+
+</div>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+
+
+          
+ 
+            $(".create_log_btn").on('click',function(){ 
+
+                var id = $(this).attr('id');
+                const myArray = id.split("_/_");
+                let book_id = myArray[0];
+                let name = myArray[1];
+                $("#book_id").val(book_id);
+                var options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    title: name,
+                    buttons: [{
+                        text: $.mage.__('Close'),
+                        class: '',
+                        click: function () {
+                            this.closeModal();
+                        }
+                    }]
+                };
+                var popup = modal(options, $('#popup-modal'));
+
+                
+
+
+                $("#popup-modal").modal("openModal");
+            });
+
+        }
+
+           
+        
+    );
+</script>
+
+

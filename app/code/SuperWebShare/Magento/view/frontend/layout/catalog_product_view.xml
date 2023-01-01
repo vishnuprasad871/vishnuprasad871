@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+ <head>
+        <remove src="SuperWebShare_Magento::css/super-web-share-public.css"/>
+        <css src="SuperWebShare_Magento::css/catalog/super-web-share-public.css"/>
+    </head>
+    <body>
+             <referenceBlock name="webshare_block" remove="true"/>
+
+        <referenceContainer name="content">
+            <block class="SuperWebShare\Magento\Block\SuperWebShare" name="product.info.custombutton" ifconfig="superwebshare/general/show_in_pdp" template="SuperWebShare_Magento::catalog/product/phtmlfile.phtml"/>
+        </referenceContainer>
+        <move element="product.info.custombutton" destination="product.info.main" after="product.info.price" />
+
+    </body>
+</page>

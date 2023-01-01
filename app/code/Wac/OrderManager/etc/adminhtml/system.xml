@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="wac" translate="label" sortOrder="900">
+            <label>Wac</label>
+        </tab>
+        <section id="ordermanager" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Order Manager Configurations</label>
+            <tab>wac</tab>
+            <resource>Wac_OrderManager::system_confign</resource>
+            <group id="kitchen_confgn" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Kitchen Order Display Configuration</label>         
+                <field id="kitchen_reftime" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Kitchen Autosync Time</label>
+                    <comment>Millisecond time to auto sync kitchen order e.g. 1000 for 1 second</comment>
+                    <validate>validate-length minimum-length4 maximum-length-6</validate>
+                </field>
+                <field id="not_accepted_notfn_interval" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Notification Time Interval For Not Accepted Orders</label>
+                    <comment>Time interval in milliseconds in which the not accepted orders check and notification sound played.</comment>
+                </field>
+                <field id="kitchen_orderPlacedAlert" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Kitchen Alert Message</label>
+                    <comment>Kitchen new order display message</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

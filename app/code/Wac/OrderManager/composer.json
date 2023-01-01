@@ -1,0 +1,26 @@
+{
+    "name": "wac/module-ordermanager",
+    "description": "Order Manager Module",
+    "require": {
+        "magento/module-store": ">100.0",
+        "magento/module-backend": ">100.0",
+        "magento/framework": ">100.0"
+    },
+    "license": [
+        "proprietary"
+    ],
+    "authors": [
+        {
+            "email": "info@webandcrafts.com",
+            "name": "Wac"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Wac\\OrderManager\\": ""
+        }
+    }
+}

@@ -1,0 +1,74 @@
+<header class="order-display-header">
+    <nav class="order-navbar-container">
+        <div class="logo-box">
+            <?php echo $block->getChildHtml('logo'); ?>
+        </div>
+        <?php $additionalInfo = $block->getAdditionalInfo(); ?>
+        <?php if ($additionalInfo != ''): ?>
+        <div class="additional-info">
+            <?= $additionalInfo ?>
+        </div>
+        <?php endif; ?>
+        <div class="order-navbar-actions">
+            <ul>
+                <li class="nav-item new-order-count">
+                    <span class="order-count">00</span>
+                    <span class="order-label">New</span>
+                </li>
+                <li class="nav-item ready-order-count">
+                    <span class="order-count">00</span>
+                    <span class="order-label">Ready</span>
+                </li>
+                <li class="nav-item today-date">
+                    <span class="current-date">00</span>
+                </li>
+                <li class="nav-item last-refresh">
+                    Last Refreshed:
+                    <span class="last-refresh-time">00:00</span>
+                </li>
+                <li class="nav-item refersh-sync">
+                    <button class="sync-order-btn" type="button">
+                        <i class="h-icon icon-refersh-order"></i>
+                    </button>
+                </li>     
+                <?php if ($block->showHandoverIcon()):?>           
+                <li class="nav-item handovered-order">
+                    <button class="handovered-order-btn" type="button">
+                        <i class="h-icon icon-handovered-order"></i>
+                    </button>
+                </li>
+                <?php endif; ?>
+                <li class="nav-item closed-order">
+                    <button class="closed-order-btn" type="button">
+                        <i class="h-icon icon-closed-order"></i>
+                    </button>
+                </li>
+                <?php /* if ($block->getData('manage_product')): ?>
+                <li class="nav-item manage-product-link">
+                    <button class="manage-product-link" name="Manage Products" type="button">
+                        <i class="h-icon icon-manage-product-link"></i>
+                    </button>
+                </li>
+                <li class="nav-item clear-cache-link">
+                    <button class="clear-cache-link" name="Clear Cache" type="button">
+                        <i class="h-icon icon-clear-cache-link"></i>
+                    </button>
+                </li>
+                <?php endif; */ ?>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="overlay-closed"></div>
+<div class="closed-order-list">
+    <div class="closed-order-header">
+        <div class="closed-order-label">Closed order[s]</div>
+        <a href="#" class="closed-order-popup-btn"><i class="h-icon icon-close-cross" aria-hidden="true"></i></a>
+    </div>
+    <div class="closed-order-content">
+        <div class="inner masonry grid-layout-style bordered"></div>
+    </div>
+</div>
+|<script>
+    var productManageUrl = "<?= $block->escapeUrl($block->getUrl('ordermanager/products/index')) ?>";
+</script>

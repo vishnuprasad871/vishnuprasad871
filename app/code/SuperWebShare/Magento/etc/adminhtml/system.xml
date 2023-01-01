@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="webshare" translate="label" sortOrder="110">
+            <label>Super Web Share</label>
+        </tab>
+        <section id="superwebshare" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Super Web Share</label>
+            <tab>webshare</tab>
+            <resource>SuperWebShare_Magento::webshare_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="button_text" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>Button Text</label>                   
+                    <comment>This text will display on the Button.</comment>
+                </field>
+                  <field id="svg_text" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>SVG Text</label>
+                    <comment>Share button Logo</comment>
+                </field>
+                <field id="button_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>Button Color</label>
+                    <comment><![CDATA[Background color]]></comment>
+                    <frontend_model>SuperWebShare\Magento\Block\Color</frontend_model>
+                    <comment>Background Color Of the Button.</comment>
+                </field>
+                 <field id="button_text_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>Button Text Color</label>
+                      <comment><![CDATA[Button Text  color]]></comment>
+                    <frontend_model>SuperWebShare\Magento\Block\Color</frontend_model>
+                    <comment>Button Text Color Of the Button.</comment>
+                </field>
+                <field id="show_in_pdp" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Show In Product Detail section</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

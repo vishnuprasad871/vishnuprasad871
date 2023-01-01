@@ -1,0 +1,864 @@
+/*
+***
+* GLOBAL CSS LIKE FONT FAMILY, DOCUMENT SIZING, FONTS, UTILITY CSS FOR KITCHEN AND CUSTOMER SCREENS
+***
+* Added ikea font css
+* utilty css classes
+* overwrite lagacy css
+***
+*/
+
+@font-face {
+    font-family: 'NotoIKEAArabic';
+    src: url('fonts/NotoIKEALatinRegular.woff') format('woff'),
+    url('fonts/NotoIKEALatinRegular.eot') format('embedded-opentype'),
+    url('fonts/NotoIKEALatinRegular.ttf') format('truetype'),
+    url('fonts/NotoIKEALatinRegular.svg#NotoIKEAArabic-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NotoIKEAArabic';
+    src: url('fonts/NotoIKEALatinBold.woff') format('woff'),
+    url('fonts/NotoIKEALatinBold.eot') format('embedded-opentype'),
+    url('fonts/NotoIKEALatinBold.ttf') format('truetype'),
+    url('fonts/NotoIKEALatinBold.svg#NotoIKEAArabic-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'NotoIKEAArabic';
+    font-weight: normal;
+    background-color: #F2F2F2;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.no-y-scroll {
+    overflow-x: hidden;
+}
+
+.h-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+
+.icon-closed-order {
+    background: url("../images/icons/books.svg") no-repeat;
+}
+
+.icon-refersh-order {
+    background: url("../images/icons/refresh.svg") no-repeat;
+    background-size: contain;
+}
+
+.icon-close-cross {
+    background: url("../images/icons/close.svg") no-repeat;
+}
+
+.catalog-orderdisplay-kitchens.page-layout-1column .column.main,
+.catalog-orderdisplay-counter.page-layout-1column .column.main {
+    padding: 0;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.scroll {
+    height: 100%;
+    overflow: auto;
+    float: left;
+    margin: 0 10px;
+}
+
+.visible {
+    visibility: visible !important;
+}
+
+.page.messages {
+    margin-top: 5%;
+    display: none;
+}
+
+.page-main {
+    max-width: 100%;
+}
+
+.copyright {
+    display: none;
+}
+
+/*
+* ORDER DISPLAY HEADER FOR KITCHEN SCREEN
+*/
+.order-display-header {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .1);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 6px #00000029;
+    height: 84px;
+}
+
+.order-navbar-container .logo-box {
+    display: inline-block;
+    margin: 18px 10px 0 15px;
+    max-width: 112px;
+}
+
+.order-navbar-container .order-navbar-actions {
+    float: right;
+}
+
+.order-navbar-actions ul {
+    display: flex;
+    padding-top: 20px;
+    align-items: flex-start;
+}
+
+.order-navbar-container .order-navbar-actions ul {
+    margin: 0;
+}
+
+.order-navbar-container .nav-item {
+    text-align: center;
+    margin: 5px 20px 0 20px;
+}
+
+.order-navbar-container .nav-item.refersh-sync,
+.order-navbar-container .nav-item.closed-order {
+    margin: -3px 0 0 0;
+}
+
+.last-refresh-time {
+    font-family: 'NotoIKEAArabic' , 'Roboto';
+    font-weight: bold;
+}
+
+.nav-item .order-count {
+    display: block;
+    font-size: 34px;
+    font-family: 'NotoIKEAArabic' , 'Roboto';
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.nav-item .order-label {
+    font-size: 14px;
+}
+
+.nav-item .current-date {
+    font-size: 22px;
+    font-family: "NotoIKEAArabic" , 'Roboto';
+    font-weight: bold;
+}
+
+.nav-item.last-refresh {
+    font-size: 16px;
+}
+
+.new-order-count .order-count {
+    color: #EC1B23;
+}
+
+.ready-order-count .order-count {
+    color: #31CB0D;
+}
+
+.order-navbar-container .nav-item button {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    font-size: 24px;
+    min-width: 56px;
+}
+
+.order-navbar-container .nav-item svg {
+    color: #1f1f1f;
+}
+
+.header {
+    display: block;
+    font-weight: bold;
+    border-bottom: 1px solid #c9c9c9;
+    padding: 4px 0;
+    margin-bottom: 12px;
+}
+
+/*
+* CLOSED ORDER POPUP CSS
+*/
+.overlay-closed {
+    width: 100%;
+    opacity: .5;
+    background: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: none;
+}
+
+.closed-order-list {
+    position: fixed;
+    -moz-transition: opacity 0.1s ease-in-out;
+    -o-transition: opacity 0.1s ease-in-out;
+    -webkit-transition: opacity 0.1s ease-in-out;
+    transition: opacity 0.1s ease-in-out;
+    width: 98.7%;
+    background: #fff;
+    z-index: 9999;
+    top: 14px;
+    margin-left: -8px;
+    border-radius: 10px;
+    display: none;
+}
+
+a.closed-order-popup-btn {
+    position: absolute;
+    right: 0;
+    font-size: 32px;
+    margin: -52px 24px 0 0;
+    color: #000;
+}
+
+.closed-order-label {
+    padding: 21px 10px 10px 0px;
+    font-size: 20px;
+    border-bottom: 1px solid #ececec;
+    width: 400px;
+    margin-left: 20px;
+    font-family: "NotoIKEAArabic" , 'Roboto';
+    font-weight: bold;
+    line-height: 16px;
+}
+
+.closed-order-list.show-closed {
+    visibility: visible;
+    padding-top: 14px;
+}
+
+.closed-order-content {
+    overflow: auto;
+}
+
+.closed-order-content .inner.masonry.bordered {
+    margin: 16px 0 0 0;
+    padding-left: 20px;
+    column-gap: 0;
+}
+
+.closed-order-content .order-status-btn, .closed-order-content .order-status-delivered-btn {
+    display: none;
+}
+
+/*
+* ORDER LISTING TILE CSS
+*/
+.row {
+    display: block;
+    border-bottom: .5px solid #eee;
+    padding: 6px 0;
+    width: 100%;
+}
+
+.row:last-child {
+    border-bottom: 0px;
+}
+
+.cell-left {
+    display: inline-block;
+    width: 85%;
+    font-size: 15px;
+    color: #000;
+}
+
+.cell-right {
+    display: inline-block;
+    vertical-align: top;
+    font-family: 'NotoIKEAArabic' , 'Roboto';
+    font-weight: bold;
+    width: 8%;
+    text-align: center;
+}
+.item-price{
+    display: inline-block;
+    vertical-align: top;
+    font-family: 'NotoIKEAArabic' , 'Roboto';
+    font-weight: bold;
+    text-align: center;
+}
+.masonry {
+    transition: all .5s ease-in-out;
+    column-gap: 20px;
+    column-fill: initial;
+    column-count: 4;
+    visibility: hidden;
+}
+
+.masonry .brick {
+    margin-bottom: 30px;
+    display: inline-block;
+    vertical-align: top;
+    background: #FFF;
+    border: 1px solid #70707045;
+    border-radius: 5px;
+}
+
+.masonry .brick {
+    transition: all .1s ease-in-out;
+    backface-visibility: hidden;
+}
+
+.container-fluid{
+    margin-top: 80px;
+}
+
+.masonry.bordered {
+    column-gap: 34px;
+    margin: 0 20px 0 0;
+    position: relative;
+}
+.map-btn{
+    border: 1px solid #31CB0D;
+    background: #31CB0D;
+    padding: 5px 10px;
+    margin-top: 5px;
+    display: block;
+    max-width: 110px;
+    color: white !important;
+}
+
+.masonry.bordered .brick {
+    padding-bottom: 0;
+    margin-bottom: 25px;
+    margin-right: 25px;
+}
+
+.masonry.gutterless {
+    column-gap: 0;
+}
+
+.masonry.gutterless .brick {
+    margin-bottom: 0;
+}
+
+.order-list-tile.minWidth {
+    min-width: 310px;
+}
+
+.order-list-tile {
+    width: 340px;
+    opacity: 1;
+    -moz-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
+    position: relative;
+}
+
+.order-list-tile .order-header {
+    padding: 10px;
+    background: #EC1B23;
+    font-size: 18px;
+    height: 90px;
+    color: #fff;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rightside-container{
+    width: 130px;
+}
+
+.order-list-tile .tokenno-container {
+    font-size: 22px;
+    font-family: "NotoIKEAArabic" , 'Roboto';
+    font-weight: bold;
+    line-height: 50px;
+}
+
+.order-list-tile .order-body {
+    padding: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.order-list-tile .order-footer {
+    padding: 5px;
+}
+
+.order-list-tile .order-status-action {
+    margin: 4px;
+}
+
+.order-list-tile .order-status-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    /* padding-left: 8px; */
+    min-width: 54px;
+    margin: 5px 6px 5px 0;
+    line-height: 1;
+}
+.timeslot-section{
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.timeslot-section.date{
+    font-size: 18px;
+    font-family: "NotoIKEAArabic" , 'Roboto';
+    font-weight: bold;
+}
+.nav-toggle{
+    display: none !important;
+}
+.order-list-tile .order-status-btn {
+    width: 100%;
+    padding: 11px;
+    font-size: 18px;
+    color: #fff;
+    background: #666666 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 4px;
+    box-shadow: none;
+}
+
+.in-ready.order-list-tile {
+    opacity: 1;
+}
+
+.in-ready.order-list-tile .order-header {
+    background: #31CB0D;
+}
+
+.is-closed.order-list-tile .order-header {
+    background: #dcdcdc;
+}
+
+.is-closed.order-list-tile .order-status-text {
+    color: #2d2d2d;
+}
+
+.order-list-main .is-closed {
+    display: none;
+}
+.rowGroup .row {
+    margin: 0;
+}
+.driver-data-section label {
+    margin-right: 10px;
+    width: 130px;
+}
+
+.driver-data-section {
+    width: 400px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+}
+.order-navbar-container .logo {
+    margin: 0;
+    max-width: 100%;
+}
+/*
+* CUSTOMER SCREEN CSS
+*/
+.catalog-orderdisplay-customer .page.messages {
+    margin: 0
+}
+
+.catalog-orderdisplay-customer .copyright {
+    display: none;
+}
+
+.catalog-orderdisplay-customer .page-main {
+    padding: 0;
+    margin: 0;
+}
+
+.catalog-orderdisplay-customer .column.main {
+    padding: 0;
+}
+
+.catalog-orderdisplay-customer .nav-sections {
+    display: none;
+}
+
+.customer-block-container {
+    height: 752px;
+    background: #292929;
+}
+
+.customer-block-container .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0;
+    height: 100%;
+}
+
+.customer-block-container .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 50%;
+    align-items: center;
+}
+
+.customer-block-container .prep-column {
+    border-right: 1.2px solid #ffdb00;
+}
+
+.customer-block-container .ready-column {
+    border-left: 1.2px solid #ffdb00;
+}
+
+.prep-column h1,
+.ready-column h1 {
+    color: #fff;
+    background: #FBD914;
+    width: 70%;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 70px;
+    font-family: 'NotoIKEAArabic' , 'Roboto';
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.ready-column h1 {
+    background: #31CB0D;
+}
+
+.order-prep,
+.order-ready {
+    padding: 0 52px 16px;
+    font-size: 5em;
+    flex: 0 49%;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 2px 3px #000;
+}
+
+.catalog-orderdisplay-customer {
+    background: #292929;
+}
+
+.order-ready {
+    color: #000;
+    text-shadow: 1px 2px 2px #655151;
+}
+
+.order-tokens-list {
+    width: 80%;
+    min-width: 460px;
+}
+
+.order-tokens-list ul {
+    padding: 0;
+}
+
+.customer-display-ready {
+    margin-top: 40px;
+}
+
+.customer-display-ready .order-prep.token-number {
+    color: #FBD914;
+    font-size: 6em;
+    padding: 0 43px 16px;
+}
+
+/*
+*  TILE AS A FAKE ORDER CSS
+*/
+.fake-order {
+    width: 150px;
+    visibility: hidden;
+    width: 1px;
+}
+
+/*
+*  OWL CAROUSEL OVERRIDE  CSS
+*/
+.owl-carousel.owl-drag .owl-item {
+    background: #292929;
+}
+
+.owl-caraousel .animated {
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+}
+
+.owl-carousel .owl-item .item {
+    display: flex;
+    flex-wrap: wrap;
+}
+.page-main{
+    max-width: 100% !important;
+}
+/*
+*  NEWLY ADDED ORDER TILE CSS
+*/
+.new-order-status-alert {
+    position: fixed;
+    z-index: 9999;
+    background: #FBD914;
+    bottom: 4px;
+    right: 4px;
+    height: auto;
+    width: auto;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 1;
+    box-shadow: 1px 2px 3px #000;
+    color: #022c50;
+    font-family: "NotoIKEAArabic", 'Roboto';
+    font-weight: bold;
+    display: none;
+}
+
+/*
+*  MEDIA QUERY'S FOR BELOW 1440 WIDTH SCREEN
+*/
+@media screen and (max-width: 1440px) {
+    .customer-display-ready {
+        margin-top: 0;
+    }
+
+    .order-prep,
+    .order-ready {
+        padding-bottom: 6px;
+        font-size: 4em;
+    }
+
+    .closed-order-list {
+        margin-left: -11px;
+    }
+}
+
+/*
+*  MEDIA QUERY'S FOR LARGER SCREEN
+*/
+@media screen and (min-width: 1700px) {
+    .masonry {
+        column-count: 5;
+    }
+}
+@media screen and (max-width: 1359.89px) {
+    .masonry {
+        column-count: 3;
+        column-gap: unset !important;
+    }
+}
+@media screen and (max-width: 1199.89px) {
+    .masonry {
+        column-count: unset !important;
+        column-gap: unset !important;
+        height: auto !important;
+        column-fill: unset;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    .container-fluid{
+        padding-right: 0;
+    }
+    .masonry.bordered .brick {
+        padding-bottom: 0;
+        margin-bottom: 15px;
+        margin-right: 15px;
+        width: calc(33.33% - 15px);
+    }
+    .nav-item .order-count {
+        font-size: 24px;
+    }
+    .order-navbar-container .nav-item {
+        text-align: center;
+        margin: 5px 15px 0;
+    }
+    .nav-item .current-date {
+        font-size: 18px;
+    }
+    .order-navbar-actions ul{
+        /* align-items: center; */
+    }
+    .h-icon {
+        display: inline-block;
+        width: 17px;
+        height: 17px;
+        background-size: cover !important;
+    }
+    .order-navbar-container .nav-item button{
+        min-width: 48px;
+    }
+}
+@media screen and (max-width: 991.89px) {
+    .nav-item.last-refresh{
+        position: absolute;
+        bottom: 10px;
+        right: 0;
+        font-size: 13px;
+    }
+    .masonry.bordered .brick{
+        width: calc(50% - 15px);
+    }
+    .container-fluid{
+        margin-top: 100px;
+    }
+    .order-list-tile .tokenno-container{
+        font-size: 16px;
+    }
+    .order-list-tile .order-status-text{
+        min-width: 30px;
+        margin-bottom: 0;
+    }
+    .shipping-address-section h4{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .nav-item .order-count{
+        font-size: 20px;
+    }
+    .order-navbar-container .order-navbar-actions ul{
+        padding-left: 0;
+        padding-top: 10px;
+        padding-right: 30px;
+    }
+    .order-navbar-container .nav-item{
+        margin: 5px 8px 0;
+    }
+    .order-navbar-container .nav-item.today-date{
+        width: 70px;
+    }
+    .nav-item .current-date{
+        font-size: 14px;
+    }
+    .order-navbar-container .nav-item.refersh-sync,
+    .order-navbar-container .nav-item.closed-order{
+        position: absolute;
+        right: 0;
+    }
+    .order-navbar-container .nav-item.closed-order{
+        top: 50px;
+    }
+    .order-navbar-container .nav-item button{
+        padding: 7px 10px;
+        width: 40px;
+    }
+    .nav-item.last-refresh{
+        right: 45px;
+    }
+    .order-list-tile .order-header{
+        display: block;
+    }
+    .order-list-tile .tokenno-container{
+        line-height: 1.4;
+        padding-top: 3px;
+    }
+    .order-list-tile .order-status-text{
+        margin-top: 2px;
+    }
+    .rightside-container{
+        display: flex;
+    }
+}
+
+
+/**
+* Custom style added for the cancel button
+*/
+.order-cancel-btn {
+    padding: 5px 11px;
+    font-size: 12px;
+    color: #fff;
+    background: #666666 0% 0% no-repeat padding-box;
+    border: none;
+    border-radius: 4px;
+    box-shadow: none;
+    margin-top: 10px;
+}
+.order-status-handovered-btn,.order-status-readytopick-btn,.order-status-delivered-btn {
+    width: 100%;
+    padding: 11px;
+    font-size: 18px;
+    color: #fff;
+    background: #31CB0D 0% 0% no-repeat padding-box !important;
+    border: 1px solid #31CB0D !important;
+    border-radius: 4px;
+    box-shadow: none;
+    margin-top:10px;
+}
+.order-list-tile .order-status-btn {
+    background: #EC1B23 0% 0% no-repeat padding-box !important;
+    border: 1px solid #EC1B23 !important;
+}
+
+.closed-order-content .brick.is-closed .order-status-handovered-btn, .closed-order-content .order-cancel-btn {
+    display: none;
+}
+.order-cancel-btn:hover {
+    background: #666666 0% 0% no-repeat padding-box !important;
+    color: white;
+}
+.ordermanager-driver-orders li.nav-item.closed-order {
+    display:none;
+}
+.ordermanager-driver-orders li.nav-item.handovered-order {
+    display:none;
+}
+.icon-handovered-order {
+    background: url("../images/icons/hanovered.svg") no-repeat;
+}
+.order-navbar-container .nav-item.handovered-order,
+.order-navbar-container .nav-item.manage-product-link,
+.order-navbar-container .nav-item.clear-cache-link {
+    margin: -3px 0 0 0;
+}
+.order-list-main .driverside-orders {
+    display: none;
+}
+.icon-manage-product-link {
+    background: url("../images/icons/product-management.png") no-repeat;
+}
+.icon-clear-cache-link {
+    background: url("../images/icons/clear-cache.png") no-repeat;
+}
+.cell-left.totals-label {
+    width: 50% !important;
+}
+.cell-right.totals-value {
+    width: 40% !important;
+    float: right;
+}
+.ordermanager-orderdisplay-kitchens .additional-info {
+    display: inline-block;
+    margin: 0px;
+    max-width: 200px;
+}

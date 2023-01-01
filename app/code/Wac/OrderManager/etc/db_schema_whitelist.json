@@ -1,0 +1,8 @@
+{
+    "sales_order": {
+        "column": {
+            "driver_name": true,
+            "driver_id": true
+        }
+    }
+}
